@@ -3,5 +3,5 @@
 Pretty simple, just run
 
 ```
-sh ./macosx-setup.sh
+sh ./macos-setup.sh
 ```

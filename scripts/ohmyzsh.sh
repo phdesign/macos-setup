@@ -11,6 +11,6 @@ if should_install oh-my-zsh 'test -d "$HOME/.oh-my-zsh"'; then
   echo "DEFAULT_USER=\"paul.heasley\"" >> ~/.zshrc
 
   # Set zsh as default shell
-  # chsh -s $(which zsh)
+  chsh -s $(which zsh)
 fi
 

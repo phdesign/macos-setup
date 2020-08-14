@@ -3,7 +3,7 @@
 set -eu
 
 # Vim
-if should_configure vim 'test -d "$HOME/.vim"'; then
+if should_configure vim "test -d \"$HOME/.vim\""; then
   git clone git@github.com:phdesign/vim.git ~/.vim
   echo "runtime vimrc" > ~/.vimrc
   local olddir=$(pwd)
