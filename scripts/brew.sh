@@ -47,10 +47,12 @@ if should_install typora 'test -e "/Applications/Typora.app"'; then
   curl -b cookies.txt -L \
     'https://github.com/elitistsnob/typora-gitlab-theme/releases/download/v1.1/typora-gitlab-theme-master-updated.zip' \
     -o typora-gitlab-theme-master-updated.zip
-  unzip typora-gitlab-theme-master-updated
-  echo "📝  TODO: Enter Beyond Compare license"
+  unzip typora-gitlab-theme-master-updated -d typora-gitlab-theme-master-updated
+  mv typora-gitlab-theme-master-updated/gitlab* "/Users/paul.heasley/Library/Application Support/abnerworks.Typora/themes"
+  echo "📝  TODO: Manually configure Typora"
+  echo "    - Typora > Preferences > General > On launch: Open custom folder"
+  echo "    - Typora > Preferences > Image > When insert...: Copy image to ./\${filename}.assets"
 fi
-
 
 # Todo
 # ----
@@ -62,7 +64,6 @@ fi
 #   - Import Zap cert
 # - Spark
 # - Spotify
-# - Typora
 # - Fork
 # - VS Code
 # - Insomnia
