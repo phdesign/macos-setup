@@ -24,6 +24,7 @@ brew_install python
 brew_install jq
 brew_install the_silver_searcher
 brew_install tree
+brew_install z
 
 # iTerm2
 if should_install iterm2 "test -e '/Applications/iTerm.app'"; then
@@ -32,6 +33,7 @@ if should_install iterm2 "test -e '/Applications/iTerm.app'"; then
   echo "    - iTerm2 > Preferences > Profiles > Other Actions > Import JSON Profiles > 'config/Tomorrow-Night-Eighties.json'"
   echo "    - iTerm2 > Preferences > Appearance > General > Theme: Minimal"
   echo "    - iTerm2 > Preferences > Appearance > Panes > Uncheck 'Show per-pane title bar with split panes'"
+  echo "    - iTerm2 > Preferences > Appearance > Dimmin > Uncheck 'Dim inactive split panes'"
 fi
 
 # Java
