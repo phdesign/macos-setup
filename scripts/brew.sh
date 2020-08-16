@@ -2,58 +2,79 @@
 
 set -eu
 
-function brew_install() {
+function needs_formulae {
   local dependency="$1"
-
-  if should_install $dependency "brew ls --versions $dependency > /dev/null"; then
-    brew install $dependency
-  fi
+  return $(brew ls --versions $dependency > /dev/null)
 }
 
-if should_install brew "command -v 'brew' > /dev/null"; then
+function needs_command {
+  local dependency="$1"
+  return $(command -v "$dependency" > /dev/null)
+}
+
+function needs_application {
+  local dependency="$1"
+  return $(test -e "/Applications/$dependency.app")
+}
+
+function install_brew {
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-fi
+}
+
+function install_formulae {
+  local dependency="$1"
+  brew install "$dependency"
+}
+
+function install_cask {
+  local dependency="$1"
+  brew cask install "$dependency"
+}
+
+install brew needs_command install_brew
 
 # Install GNU core utilities (those that come with OS X are outdated).
-brew_install coreutils
+install coreutils needs_formulae install_formulae
 
 # Install Python
-brew_install python
+install python needs_formulae install_formulae
 
 # Custom tools
-brew_install jq
-brew_install the_silver_searcher
-brew_install tree
-brew_install z
+install jq needs_formulae install_formulae
+install the_silver_searcher needs_formulae install_formulae
+install tree needs_formulae install_formulae
+install z needs_formulae install_formulae
 
 # iTerm2
-if should_install iterm2 "test -e '/Applications/iTerm.app'"; then
-  brew cask install iterm2
+function install_iterm {
+  install_cask iterm2
   echo "📝  TODO: Manually configure iTerm2"
   echo "    - iTerm2 > Preferences > Profiles > Other Actions > Import JSON Profiles > 'config/Tomorrow-Night-Eighties.json'"
   echo "    - iTerm2 > Preferences > Appearance > General > Theme: Minimal"
   echo "    - iTerm2 > Preferences > Appearance > Panes > Uncheck 'Show per-pane title bar with split panes'"
   echo "    - iTerm2 > Preferences > Appearance > Dimmin > Uncheck 'Dim inactive split panes'"
-fi
+}
+partial needs_iterm needs_application "iTerm"
+install iterm2 needs_iterm install_iterm
 
 # Java
-if should_install java "command -v 'java' > /dev/null"; then
-  brew cask install java
-fi
+install java needs_command install_formulae
 
 # Beyond Compare 4
-if should_install beyond-compare "test -e '/Applications/Beyond Compare.app'"; then
-  brew cask install beyond-compare
+function install_beyond_compare {
+  install_cask beyond-compare
   echo "📝  TODO: Enter Beyond Compare license"
-fi
-if should_configure bcompare 'command -v "bcompare" > /dev/null'; then
-  ln -s /Applications/Beyond\ Compare.app/Contents/MacOS/bcomp /usr/local/bin/bcompare
-  ln -s /Applications/Beyond\ Compare.app/Contents/MacOS/bcomp /usr/local/bin/bcomp
-fi
+  if needs_command bcompare; then
+    ln -s /Applications/Beyond\ Compare.app/Contents/MacOS/bcomp /usr/local/bin/bcompare
+    ln -s /Applications/Beyond\ Compare.app/Contents/MacOS/bcomp /usr/local/bin/bcomp
+  fi
+}
+partial needs_beyond_compare needs_application "Beyond Compare"
+install beyond-compare needs_beyond_compare install_beyond_compare
 
 # Typora
-if should_install typora 'test -e "/Applications/Typora.app"'; then
-  brew cask install typora
+function install_typora {
+  install_cask typora
   curl -b cookies.txt -L \
     "https://github.com/elitistsnob/typora-gitlab-theme/releases/download/v1.1/typora-gitlab-theme-master-updated.zip" \
     -o typora-gitlab-theme-master-updated.zip
@@ -62,7 +83,9 @@ if should_install typora 'test -e "/Applications/Typora.app"'; then
   echo "📝  TODO: Manually configure Typora"
   echo "    - Typora > Preferences > General > On launch: Open custom folder"
   echo "    - Typora > Preferences > Image > When insert...: Copy image to ./\${filename}.assets"
-fi
+}
+partial needs_typora needs_application "Typora"
+install typora needs_typora install_typora
 
 # Todo
 # ----
