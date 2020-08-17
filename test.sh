@@ -43,10 +43,14 @@ compose() {
 function partial() {
   result_fun=$1; shift
   fun=$1; shift
-  params=$*
+  params=""
+  while [ -n "$1" ]; do
+    params="$params \"$1\""
+    shift
+  done
   eval "$result_fun() {
-    more_params=\$*;
-    $fun \"$params\" \"\$more_params\";
+    more_params=\"\$@\";
+    $fun $params \$more_params;
   }"
 }
 
@@ -91,10 +95,30 @@ function writeline {
   echo $4
 }
 
+function argstr {
+  params=""
+  while [ -n "$1" ]; do
+    params="$params \"$1\""
+    shift
+  done
+  return $params
+}
+
+function rah {
+  params=("$@")
+  eval "writeline ${params[@]}"
+}
+
+rah one two "three and four"
+
 partial spaces writeline "Beyond Compare" next
 spaces "last" "after last"
+exit
 
 echo yo | lambda a : 'noop $a'
+
+echo elho | noop
+
 
 install jq needs_formulae noop
 partial install_jq noop "test"
