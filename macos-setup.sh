@@ -27,6 +27,8 @@ source ./lib/shared.sh
 
 source ./scripts/brew.sh
 
+source ./scripts/vim.sh
+
 source ./scripts/ohmyzsh.sh
 
 source ./scripts/fonts.sh

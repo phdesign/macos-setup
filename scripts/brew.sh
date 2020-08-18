@@ -77,6 +77,7 @@ install_beyond_compare
 install_typora
 #install_node
 install_cask visual-studio-code
+# TODO: Configure VS Code
 
 # Todo
 # ----
@@ -89,7 +90,6 @@ install_cask visual-studio-code
 # - Spark
 # - Spotify
 # - Fork
-# - VS Code
 # - Insomnia
 # - Dropbox
 
