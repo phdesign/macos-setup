@@ -9,18 +9,20 @@ function install_ctags {
 }
 
 function configure_vim {
-    if should_configure vim "test -d \"$HOME/.vim\""; then
-        git clone git@github.com:phdesign/vim.git ~/.vim
-        echo "runtime vimrc" > ~/.vimrc
-        local olddir=$(pwd)
-        cd ~/.vim
-        git submodule update --init
-        cd "$olddir"
+    if should_configure vim "test -d \"$HOME/.config/nvim\""; then
+        mkdir -p "$HOME/.config/nvim"
+        cp ../config/init.vim "$HOME/.config/nvim/"
     fi
+}
+
+function install_vim_plug {
+    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 }
 
 install_formulae neovim
 install_ctags
 #install_esctags
+install_vim_plug
 configure_vim
 
