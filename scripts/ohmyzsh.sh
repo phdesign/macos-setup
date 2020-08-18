@@ -9,8 +9,15 @@ function install_ohmyzsh {
         # Setup theme
         sed -i '' 's/^ZSH_THEME=.*$/ZSH_THEME="agnoster"/g' ~/.zshrc
 
-        echo '\n# Set default user to hide it in the prompt' >> ~/.zshrc
-        echo 'DEFAULT_USER="paul.heasley"' >> ~/.zshrc
+        cat >> ~/.zshrc <<- EOM
+# Set default user to hide it in the prompt
+DEFAULT_USER="paul.heasley"
+
+# Shorten longs paths
+prompt_dir() {
+  prompt_segment blue $CURRENT_FG '%(5~|%-1~/…/%3~|%4~)'
+}
+EOM
 
         # Setup zsh-autosuggestions
         git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
