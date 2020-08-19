@@ -33,7 +33,7 @@ function install_vim_plug {
         sh -c "curl -fLo \"$dest\" --create-dirs \
            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
         # Install the plugins
-        nvim -i NONE -es -c "silent\! PlugInstall" -c "qa"
+        nvim -i NONE --headless +PlugInstall +qa
     fi
 }
 
@@ -41,14 +41,14 @@ function install_coc_extensions {
     if should_configure coc-extensions "has_folder \"$HOME/.config/coc/extensions\""; then
         mkdir -p ~/.config/coc/extensions
         echo '{"dependencies":{}}'> ~/.config/coc/extensions/package.json
-        nvim -i NONE -es -c "silent\! CocInstall -sync \
+        nvim -i NONE --headless +"CocInstall -sync \
             coc-tsserver \
             coc-json \
             coc-html \
             coc-css \
             coc-snippets \
             coc-python" \
-            -c "qa"
+            +qa
     fi
 }
 
