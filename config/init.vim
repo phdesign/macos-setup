@@ -1,3 +1,10 @@
+" Bootstrap Plug
+if empty(glob(stdpath('data') . '/site/autoload/plug.vim'))
+  execute 'silent !curl -fLo ' . stdpath('data') . '/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " Load plugins with Plug
 call plug#begin(stdpath('data') . '/plugged')
 

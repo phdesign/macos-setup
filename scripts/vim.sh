@@ -11,21 +11,15 @@ function install_ctags {
 function configure_vim {
     if should_configure vim "has_folder \"$HOME/.config/nvim\""; then
         mkdir -p "$HOME/.config/nvim"
-        #cp ./config/init.vim "$HOME/.config/nvim/"
-        ln -s ./config/init.vim ~/.config/nvim/init.vim
+        ln -s $(pwd)/config/init.vim ~/.config/nvim/init.vim
 
-        # This - iTerm2 / NVIM dock support
-        # https://gregrs-uk.github.io/2018-11-01/open-files-neovim-iterm2-macos-finder/
-    fi
-}
-
-function install_vim_plug {
-    local dest="${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/autoload/plug.vim"
-    if should_install vim-plug "has_file \"$dest\""; then
-        sh -c "curl -fLo \"$dest\" --create-dirs \
-           https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-        # Install the plugins
-        nvim -es -u ~/.config/nvim/init.vim -i NONE -c "PlugInstall" -c "qa"
+        cat << EOM
+📝  TODO: Setup NeoVim macOS shortcut
+    - Create applescript application using './config/neovim.applescript'
+    - Copy icon from https://github.com/neovim/neovim.github.io/blob/master/logos/neovim-mark.png
+    - Right click on application, click 'Get Info', select icon and paste
+    - Drag application to Dock
+EOM
     fi
 }
 
@@ -33,5 +27,3 @@ install_formulae neovim
 install_ctags
 #install_esctags
 configure_vim
-install_vim_plug
-
