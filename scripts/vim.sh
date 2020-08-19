@@ -33,33 +33,22 @@ function install_vim_plug {
         sh -c "curl -fLo \"$dest\" --create-dirs \
            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
         # Install the plugins
-        nvim -es -i NONE -c "PlugInstall" -c "qa" | true
+        nvim -i NONE -es -c "silent\! PlugInstall" -c "qa"
     fi
 }
 
 function install_coc_extensions {
     if should_configure coc-extensions "has_folder \"$HOME/.config/coc/extensions\""; then
-        local olddir=$(pwd)
         mkdir -p ~/.config/coc/extensions
-        cd ~/.config/coc/extensions
-        echo '{"dependencies":{}}'> package.json
-        #npm install \
-           #--global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod \
-            #coc-tsserver \
-            #coc-json \
-            #coc-html \
-            #coc-css \
-            #coc-snippets \
-            #coc-python
-        nvim -es -u ~/.config/nvim/init.vim -i NONE -c "CocInstall -sync
-            \ coc-tsserver
-            \ coc-json
-            \ coc-html
-            \ coc-css
-            \ coc-snippets
-            \ coc-python
-            \|q"
-        cd "$olddir"
+        echo '{"dependencies":{}}'> ~/.config/coc/extensions/package.json
+        nvim -i NONE -es -c "silent\! CocInstall -sync \
+            coc-tsserver \
+            coc-json \
+            coc-html \
+            coc-css \
+            coc-snippets \
+            coc-python" \
+            -c "qa"
     fi
 }
 
