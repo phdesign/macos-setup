@@ -9,15 +9,18 @@ function install_ctags {
 }
 
 function configure_vim {
-    if should_configure vim "test -d \"$HOME/.config/nvim\""; then
+    if should_configure vim "has_folder \"$HOME/.config/nvim\""; then
         mkdir -p "$HOME/.config/nvim"
-        cp ../config/init.vim "$HOME/.config/nvim/"
+        cp ./config/init.vim "$HOME/.config/nvim/"
     fi
 }
 
 function install_vim_plug {
-    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    local dest="${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/autoload/plug.vim"
+    if should_install vim-plug "has_file \"$dest\""; then
+        sh -c "curl -fLo \"$dest\" --create-dirs \
+           https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+    fi
 }
 
 install_formulae neovim

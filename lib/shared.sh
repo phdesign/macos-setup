@@ -40,6 +40,14 @@ function has_application {
     return $(test -e "/Applications/$1.app")
 }
 
+function has_folder {
+    return $(test -d "$1")
+}
+
+function has_file {
+    return $(test -f "$1")
+}
+
 function install_formulae {
     local dependency="$1"
     if should_install $dependency "has_formulae $dependency"; then
