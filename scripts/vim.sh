@@ -23,7 +23,19 @@ EOM
     fi
 }
 
+function install_vim_plug {
+    # Must be run after configure_vim so that the init.vim exists
+    local dest="${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/autoload/plug.vim"
+    if should_install vim-plug "has_file \"$dest\""; then
+        sh -c "curl -fLo \"$dest\" --create-dirs \
+           https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+        # Install the plugins
+        nvim -es -u ~/.config/nvim/init.vim -i NONE -c "PlugInstall" -c "qa"
+    fi
+}
+
 install_formulae neovim
 install_ctags
 #install_esctags
 configure_vim
+install_vim_plug

@@ -11,11 +11,13 @@ function install_brew {
 function install_iterm {
     if should_install iterm "has_application 'iTerm'"; then
         brew cask install iterm
-        echo "📝  TODO: Manually configure iTerm2"
-        echo "    - iTerm2 > Preferences > Profiles > Other Actions > Import JSON Profiles > 'config/Tomorrow-Night-Eighties.json'"
-        echo "    - iTerm2 > Preferences > Appearance > General > Theme: Minimal"
-        echo "    - iTerm2 > Preferences > Appearance > Panes > Uncheck 'Show per-pane title bar with split panes'"
-        echo "    - iTerm2 > Preferences > Appearance > Dimmin > Uncheck 'Dim inactive split panes'"
+        cat << EOM
+📝  TODO: Manually configure iTerm2
+    - iTerm2 > Preferences > Profiles > Other Actions > Import JSON Profiles > 'config/Tomorrow-Night-Eighties.json'
+    - iTerm2 > Preferences > Appearance > General > Theme: Minimal
+    - iTerm2 > Preferences > Appearance > Panes > Uncheck 'Show per-pane title bar with split panes'
+    - iTerm2 > Preferences > Appearance > Dimmin > Uncheck 'Dim inactive split panes'
+EOM
     fi
 }
 
@@ -49,9 +51,11 @@ function install_typora {
             -o typora-gitlab-theme-master-updated.zip
         unzip typora-gitlab-theme-master-updated -d typora-gitlab-theme-master-updated
         mv typora-gitlab-theme-master-updated/gitlab* "/Users/paul.heasley/Library/Application Support/abnerworks.Typora/themes"
-        echo "📝  TODO: Manually configure Typora"
-        echo "    - Typora > Preferences > General > On launch: Open custom folder"
-        echo "    - Typora > Preferences > Image > When insert...: Copy image to ./\${filename}.assets"
+        cat << EOM
+📝  TODO: Manually configure Typora
+    - Typora > Preferences > General > On launch: Open custom folder
+    - Typora > Preferences > Image > When insert...: Copy image to ./${filename}.assets
+EOM
     fi
 }
 
