@@ -31,17 +31,18 @@ Plug 'Raimondi/yaifa'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-scripts/AutoComplPop'
+"Plug 'vim-scripts/AutoComplPop'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'vim-scripts/OnSyntaxChange'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'Yggdroot/indentLine'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -183,17 +184,17 @@ autocmd User SyntaxCommentEnterI silent! AcpLock
 autocmd User SyntaxCommentLeaveI silent! AcpUnlock
 
 " Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 0
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
 
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_python_python_exec = '/usr/local/bin/python3'
+"let g:syntastic_javascript_checkers = ['eslint']
+"let g:syntastic_python_python_exec = '/usr/local/bin/python3'
 
 " Blamer.nvim
 let g:blamer_enabled = 1

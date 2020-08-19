@@ -13,6 +13,9 @@ function configure_vim {
         mkdir -p "$HOME/.config/nvim"
         ln -s $(pwd)/config/init.vim ~/.config/nvim/init.vim
 
+        # Install pynvim
+        python3 -m pip install --user --upgrade pynvim
+
         cat << EOM
 📝  TODO: Setup NeoVim macOS shortcut
     - Create applescript application using './config/neovim.applescript'
@@ -30,7 +33,33 @@ function install_vim_plug {
         sh -c "curl -fLo \"$dest\" --create-dirs \
            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
         # Install the plugins
-        nvim -es -u ~/.config/nvim/init.vim -i NONE -c "PlugInstall" -c "qa"
+        nvim -es -i NONE -c "PlugInstall" -c "qa" | true
+    fi
+}
+
+function install_coc_extensions {
+    if should_configure coc-extensions "has_folder \"$HOME/.config/coc/extensions\""; then
+        local olddir=$(pwd)
+        mkdir -p ~/.config/coc/extensions
+        cd ~/.config/coc/extensions
+        echo '{"dependencies":{}}'> package.json
+        #npm install \
+           #--global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod \
+            #coc-tsserver \
+            #coc-json \
+            #coc-html \
+            #coc-css \
+            #coc-snippets \
+            #coc-python
+        nvim -es -u ~/.config/nvim/init.vim -i NONE -c "CocInstall -sync
+            \ coc-tsserver
+            \ coc-json
+            \ coc-html
+            \ coc-css
+            \ coc-snippets
+            \ coc-python
+            \|q"
+        cd "$olddir"
     fi
 }
 
@@ -39,3 +68,4 @@ install_ctags
 #install_esctags
 configure_vim
 install_vim_plug
+install_coc_extensions
