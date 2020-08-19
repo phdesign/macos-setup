@@ -267,6 +267,24 @@ let g:gutentags_ctags_exclude = [
       \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
       \ ]
 
+" Conquer of Completion (coc)
+let g:coc_global_extensions = [
+\ 'coc-angular',
+\ 'coc-css',
+\ 'coc-cssmodules',
+\ 'coc-emmet',
+\ 'coc-eslint',
+\ 'coc-highlight',
+\ 'coc-html',
+\ 'coc-json',
+\ 'coc-python',
+\ 'coc-sh',
+\ 'coc-snippets',
+\ 'coc-tsserver',
+\ 'coc-ultisnips',
+\ 'coc-yaml'
+\ ]
+
 " Allow project level configuration
 set exrc
 " Prevent :autocmd, shell and write commands
