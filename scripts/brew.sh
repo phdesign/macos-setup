@@ -87,8 +87,7 @@ install_formulae tree
 install_formulae z
 
 # Install applications
-# Rectangle is a window resizer app
-install_rectangle
+install_rectangle   # Rectangle is a window resizer app
 install_iterm
 install_cask java
 install_beyond_compare
