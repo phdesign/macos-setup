@@ -1,41 +1,44 @@
 " Load plugins with Plug
 call plug#begin(stdpath('data') . '/plugged')
 
-Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
-Plug 'airblade/vim-gitgutter'
-Plug 'APZelos/blamer.nvim'
+"Plug 'JulesWang/css.vim'
+"Plug 'MarcWeber/vim-addon-mw-utils'
+"Plug 'MaxMEllon/vim-jsx-pretty'
+"Plug 'PProvost/vim-ps1'
 "Plug 'bkad/CamelCaseMotion'
-Plug 'bling/vim-airline'
 "Plug 'dearrrfish/vim-applescript'
 "Plug 'digitaltoad/vim-pug'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'elzr/vim-json'
 "Plug 'garbas/vim-snipmate'
 "Plug 'genoma/vim-less'
 "Plug 'godlygeek/tabular'
 "Plug 'honza/vim-snippets'
-"Plug 'JulesWang/css.vim'
-Plug 'kien/ctrlp.vim'
 "Plug 'leafgarland/typescript-vim'
-Plug 'ludovicchabant/vim-gutentags'
 "Plug 'majutsushi/tagbar'
-"Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'mattn/emmet-vim'
-"Plug 'MaxMEllon/vim-jsx-pretty'
 "Plug 'mxw/vim-jsx'
 "Plug 'pangloss/vim-javascript'
-"Plug 'PProvost/vim-ps1'
+"Plug 'tomtom/tlib_vim'
+"Plug 'tpope/vim-fugitive'
+"Plug 'vim-scripts/hexHighlight.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'APZelos/blamer.nvim'
+Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
+Plug 'editorconfig/editorconfig-vim'
+Plug 'elzr/vim-json'
+Plug 'kien/ctrlp.vim'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'mattn/emmet-vim'
+Plug 'Raimondi/yaifa'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
-"Plug 'tomtom/tlib_vim'
-"Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/AutoComplPop'
 Plug 'vim-scripts/BufOnly.vim'
-"Plug 'vim-scripts/hexHighlight.vim'
+Plug 'vim-scripts/OnSyntaxChange'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'Yggdroot/indentLine'
@@ -103,7 +106,7 @@ let mapleader = ","
 " title case a line or selection (better)
 vmap <leader>t :s/\%V\<\(\w\)\(\w*\)\>/\u\1\L\2/ge<bar>noh<cr>
 " sort lines
-map <leader>s :'<,'>sort u<cr>
+map <leader>s :'<,'>sort i<cr>
 " delete blank lines
 map <leader>db :DeleteBlanks<cr>
 " close buffer and switch to previous
@@ -138,6 +141,7 @@ set listchars=tab:▸\ ,eol:¬
 set list
 
 " Airline
+let g:airline_theme='tomorrow'
 set laststatus=2           " show status bar even with no split
 let g:airline_powerline_fonts=1                 " use powerline fonts
 let g:airline#extensions#tabline#enabled=1      " enable the list of buffers
