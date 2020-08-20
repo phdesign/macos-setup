@@ -3,7 +3,7 @@ call plug#begin(stdpath('data') . '/plugged')
 
 "Plug 'JulesWang/css.vim'
 "Plug 'MarcWeber/vim-addon-mw-utils'
-"Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'MaxMEllon/vim-jsx-pretty'
 "Plug 'PProvost/vim-ps1'
 "Plug 'bkad/CamelCaseMotion'
 "Plug 'dearrrfish/vim-applescript'
@@ -12,13 +12,15 @@ call plug#begin(stdpath('data') . '/plugged')
 "Plug 'genoma/vim-less'
 "Plug 'godlygeek/tabular'
 "Plug 'honza/vim-snippets'
-"Plug 'leafgarland/typescript-vim'
+Plug 'leafgarland/typescript-vim'
 "Plug 'majutsushi/tagbar'
 "Plug 'mxw/vim-jsx'
 "Plug 'pangloss/vim-javascript'
 "Plug 'tomtom/tlib_vim'
 "Plug 'tpope/vim-fugitive'
 "Plug 'vim-scripts/hexHighlight.vim'
+Plug 'jparise/vim-graphql'
+Plug 'leafgarland/typescript-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'APZelos/blamer.nvim'
 Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
@@ -73,7 +75,7 @@ if !has('win32')
     "endif
     set gfn=Fira\ Code:h14
     set guifont=Fira\ Code:h14
-    set directory=$HOME/.vim/tmp//
+    let &directory=stdpath('data') . '/tmp/'
     set mouse=a
 
     " Stop annoying shift arrow mistakes
@@ -163,6 +165,7 @@ let g:session_autoload='no'
 let g:session_autosave='yes'
 let g:session_autosave_periodic=1
 let g:session_autosave_silent=1
+let g:session_directory=stdpath('data') . '/sessions'
 
 " NERDTree
 "let g:nerdtree_tabs_open_on_gui_startup=0      " disable nerdtree_tabs on startup as it conflicts with vim-session
@@ -206,7 +209,7 @@ let g:gutentags_ctags_executable_javascript = 'es-ctags'
 "let g:gutentags_add_default_project_roots = 0
 "let g:gutentags_project_root = ['package.json', '.git']
 
-let g:gutentags_cache_dir = expand('~/.vim/tmp/ctags/')
+let g:gutentags_cache_dir = stdpath('data') . '/tmp/ctags/'
 command! -nargs=0 GutentagsClearCache call system('rm ' . g:gutentags_cache_dir . '/*')
 
 let g:gutentags_generate_on_new = 1
