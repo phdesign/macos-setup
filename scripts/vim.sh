@@ -10,8 +10,7 @@ function install_ctags {
 
 function configure_vim {
     if should_configure vim "has_folder \"$HOME/.config/nvim\""; then
-        mkdir -p "$HOME/.config/nvim"
-        ln -s $(pwd)/config/init.vim ~/.config/nvim/init.vim
+        ln -s $(pwd)/config/nvim ~/.config
 
         # Install pynvim
         python3 -m pip install --user --upgrade pynvim
@@ -23,6 +22,15 @@ function configure_vim {
     - Right click on application, click 'Get Info', select icon and paste
     - Drag application to Dock
 EOM
+    fi
+}
+
+function configure_vim_docs {
+    local vim_docs_dir="${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/doc"
+    if should_configure vim-docs "has_folder \"$vim_docs_dir\""; then
+        mkdir -p $vim_docs_dir
+        ln -s $(pwd)/config/vim-cheatsheet.txt $vim_docs_dir
+        nvim -es -u ~/.config/nvim/init.vim -i NONE -c "helptags $vim_docs_dir" -c "qa" || true
     fi
 }
 
@@ -42,3 +50,4 @@ install_ctags
 #install_esctags
 configure_vim
 install_vim_plug
+configure_vim_docs

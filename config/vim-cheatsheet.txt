@@ -1,0 +1,300 @@
+*cheatsheet.txt*        *Cheatsheet* for Vim
+
+Author: Paul Heasley <paul.heasley@gmail.com>
+
+==============================================================================
+CONTENTS
+
+Help                      |cheatsheet_help|
+Moving around             |cheatsheet_moving_around|
+Editing                   |cheatsheet_editing|
+Selection                 |cheatsheet_selection|
+Copy and paste            |cheatsheet_copy_paste|
+Search and replace        |cheatsheet_search_replace|
+Buffers                   |cheatsheet_buffers|
+Tabs                      |cheatsheet_tabs|
+Indentation               |cheatsheet_indentation|
+Syntax                    |cheatsheet_syntax|
+Command line navigation   |cheatsheet_command_line|
+NERDTree                  |cheatsheet_nerdtree|
+Ctrl-P                    |cheatsheet_ctrlp|
+Emmet                     |cheatsheet_emmet|
+Multiple Cursors          |cheatsheet_multiple_cursors|
+Using marks               |cheatsheet_marks|
+Batch commands            |cheatsheet_batch|
+Examples                  |cheatsheet_examples|
+Colour schemes            |cheatsheet_colourschemes|
+References                |cheatsheet_references|
+Todo                      |cheatsheet_todo|
+
+==============================================================================
+HELP                                                           *cheatsheet_help*
+
+<c-]>               Follow a link
+<c-t>               Go backwards
+:tab h {pattern}    Open help topic in new tab 
+:Helptags           Update help index
+:helpg {pattern}    Search for help topics (use `:copen` to list matches)
+
+==============================================================================
+MOVING AROUND                                         *cheatsheet_moving_around*
+
+hjkl                Cursor positions 
+0                   Jump to start of line 
+^                   Jump to first non-blank character of line 
+$                   Jump to last character in line 
+N%                  Go to N percentage of file
+gg                  Go to top of file
+G                   Go to bottom of file
+Go                  Start editing from bottom of file 
+w / W               Jump word / using special chars
+e / E               Jump to end of word / using special chars
+b / B               Jump to previous word / using special chars
+ge / gE             Jump to end of previous word / using special chars
+``                  Return to previous cursor position
+<c-e>               Move screen up one line keeping cursor position
+<c-y>               Move screen down one line keeping cursor position
+zz                  Centre screen on cursor position
+
+==============================================================================
+EDITING                                                     *cheatsheet_editing*
+
+ciw                 Change word under cursor
+u                   Undo
+<c-r>               Redo
+<c-v>{motion}$A     Append to multiple lines
+cc                  Start editing from the indent of the line
+:w ++enc=utf-8      Save file with UTF-8 encoding
+
+==============================================================================
+SELECTION                                                 *cheatsheet_selection*
+
+vit                 Select inner tag content 
+vi}                 Select inside of braces 
+vi"                 Select inside of quotes
+V                   Select visual line mode
+`] ']               To the last character of the previously yanked text
+gv                  Repeat last selection (press ESC to end up at the end)
+g<c-g>              Displays a statistics summary of selected text
+<c-q>               Windows substitue for Ctrl-V if used for pasting
+
+==============================================================================
+COPY AND PASTE                                           *cheatsheet_copy_paste*
+
+"*y                 Copy to * buffer & system clipboard
+,p                  Paste system clipboard to line below
+,P                  Paste system clipboard to line above
+,r                  Replace this word with previously copied text
+
+==============================================================================
+SEARCH AND REPLACE                                   *cheatsheet_search_replace*
+
+*                   Find next instance of indentifer under cursor 
+#                   Find prev instance of identifier under cursor 
+g*                  Like * but also partial matches 
+g#                  Like # but also partial matches 
+gd                  Go to local definition of variable 
+gD                  Go to global definition of variable
+/{pattern}          Searches for pattern 
+n                   Repeats last search 
+:noh                Clear highlights
+>
+    :vimgrep /{pattern}/gj **/*
+<                    Find all instances of pattern in all files in working 
+                    directory 
+
+:Ag! {pattern}      Silver searcher version of above
+:copen              Open the quick fix dialog to view grep results 
+:%s/<c-r>/          Start a substitute, insert last search register 
+g&                  Repeat last substitute 
+\_.                 Period matches across multiple lines 
+\{-}                Non greedy search (e.g. *?) 
+:%s/pattern//gn     Count matches
+:%s/a/b/gc          Replace a with b throught document but prompt on each match
+\c                  Make search pattern case insensitive (can appear anywhere 
+                    in search, e.g. /\ccaseinsensitive or /caseinsensitive\c) 
+\C                  Make search pattern case sensitive (if ignorecase on)
+
+==============================================================================
+BUFFERS                                                     *cheatsheet_buffers*
+
+:ls                 List buffers 
+:b N                Switch to buffer number N (use `:ls` to find number) 
+:b {part_filename}  Switches to buffer with name matching. Use tab completion as well 
+:bn                 Switch to next buffer 
+:bf                 Switch to first buffer
+:bl                 Switch to last buffer
+ctrl-p              Will also search buffers 
+:new                New buffer in horizontal window (or :vnew) 
+:enew               New blank buffer (e.g. new file)
+<c-w><c-r>          Rotate column or row of split windows
+
+==============================================================================
+TABS                                                           *cheatsheet_tabs*
+
+gt                  Next tab 
+gT                  Previous tab 
+:tabc               Close tab 
+:tab new            New tab with a new buffer
+
+==============================================================================
+INDENTATION                                             *cheatsheet_indentation*
+>
+    :set ts=2 sts=2 noet
+    :retab!
+<                    Changes every 2 spaces to a TAB character
+>
+    :set ts=4 sts=4 et
+    :retab
+<                    Changes every TAB to 4 spaces. 
+
+gg=G                Reformat indentation
+
+==============================================================================
+SYNTAX                                                       *cheatsheet_syntax*
+>
+    :echo glob($VIMRUNTIME . '/syntax/*.vim') 
+<                    List all available syntax 
+
+set syntax=cs       Set syntax to C#
+set syntax=text     Set syntax to plain text
+
+==============================================================================
+COMMAND LINE NAVIGATION                                *cheatsheet_command_line*
+
+<c-r>N              Paste N register
+:h                  cmdline-editing Help 
+<c-b>               To beginning 
+<c-e>               To end 
+<c-w>               Delete word before cursor 
+<c-u>               Delete from cursor to start of line 
+<s-left> / <s-right>    Jump words
+
+==============================================================================
+NERDTREE                                                   *cheatsheet_nerdtree*
+
+m                   Menu to add/edit/delete files 
+:Bookmark           To create bookmark 
+<s-B>               Toggle dislay of bookmarks 
+<s-A>               To maximise / minimise the file tree 
+r                   Refresh current directory 
+<s-R>               Refresh top level directory
+:NERDTreeFind       Locate the current file in the nerd tree view
+
+==============================================================================
+CTRL-P                                                        *cheatsheet_ctrlp*
+
+<c-x>               Open in a new split
+
+==============================================================================
+EMMET                                                         *cheatsheet_emmet*
+
+<c-y>,              Autocomplete tag
+
+==============================================================================
+MULTIPLE CURSORS                                   *cheatsheet_multiple_cursors*
+
+<c-n>               Select next instance of word under cusor, then...
+c                   Change all instances of word
+s                   Delete instances of word
+v                   Switch to visual mode, then any visual command (i, I, a, A)
+<c-p>               Undo selecting this instance and go back to last
+<c-x>               Skip this instance
+
+==============================================================================
+USING MARKS                                                   *cheatsheet_marks*
+
+ma                  Set mark a at current cursor location
+'a                  Jump to line of mark a (first non-blank character in line)
+`a                  Jump to position (line and column) of mark a
+d'a                 Delete from current line to line of mark a
+d`a                 Delete from current cursor position to position of mark a
+c'a                 Change text from current line to line of mark a
+y`a                 Yank text to unnamed buffer from cursor to position of mark a
+:marks              List all the current marks
+:marks aB           List marks a, B
+
+Deleting marks
+
+:delmarks abxy      Delete marks a, b, x, y
+:delmarks!          Delete all lowercase marks for the current buffer (a-z)
+
+Special marks
+
+`.                  Jump to position where last change occurred in current buffer
+`"                  Jump to position where last exited current buffer
+`0                  Jump to position in last file edited (when exited Vim)
+`1                  Like `0 but the previous file (also `2 etc)
+''                  Jump back (to line in current buffer where jumped from)
+``                  Jump back (to position in current buffer where jumped from)
+`[ or `]            Jump to beginning/end of previously changed or yanked text
+`< or `>            Jump to beginning/end of last visual selection
+
+==============================================================================
+BATCH COMMANDS                                                *cheatsheet_batch*
+
+:args %:p:h/*       Set the list of files to be changed as every file in the 
+                    folder of the currently open file
+>
+    :argdo execute "normal! @q" | w
+<                   For every file in args, run the 'q' macro
+
+==============================================================================
+EXAMPLES                                                   *cheatsheet_examples*
+>
+    %s/\nAuthor:/ Author:/g
+    %v/\(^D|jackr|scottb|paul.heasley|anitah\)/d
+<                    Phabricator filter commits
+>
+:'<,'>s/^/\=(line('.') - 6).'. '
+<                    Insert line numbers at start of line for selection
+
+>
+    let i=1 | g/on step\d*()/s//\="on step".i."()"/ | let i=i+1
+<                    Find and replace with incremental numbers
+
+>
+    for i in range(0,17) | put ='['.i.':v:0] ['.i.':a:0]' | endfor
+<                    Generate a list of incremental numbers
+
+==============================================================================
+COLOUR SCHEMES                                        *cheatsheet_colourschemes*
+
+   * codeschool
+   * molokai
+   * railscasts
+   * solarized (set background=dark)
+   * sorcerer
+   * Monokai
+   * hybrid
+   * mustang
+   * bubblegum
+   * lizard
+   * apprentice
+   * pencil
+   * babymate256
+   * Tomorrow-Night
+   * Tomorrow-Night-Eighties
+   * iceberg
+   * atom
+
+==============================================================================
+REFERENCES                                               *cheatsheet_references*
+
+https://github.com/carlhuda/janus 
+https://github.com/ecarter/vim-config 
+http://www.idyllic-software.com/blog/vim-and-moi/ 
+https://github.com/flazz/vim-colorschemes 
+https://github.com/mbadran/headlights 
+https://github.com/Zuckonit/vim-airline-tomato
+
+==============================================================================
+TODO                                                           *cheatsheet_todo*
+
+   * Save new file when closing and restore when opening (Sublime style)
+   * Markdown preview?
+   * Evernote integration?
+   * LESS support
+
+==============================================================================
+vim: filetype=help expandtab textwidth=78 tabstop=8 norightleft foldenable foldlevel=0 :

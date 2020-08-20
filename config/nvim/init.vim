@@ -269,20 +269,19 @@ let g:gutentags_ctags_exclude = [
 
 " Conquer of Completion (coc)
 let g:coc_global_extensions = [
-\ 'coc-angular',
-\ 'coc-css',
-\ 'coc-cssmodules',
-\ 'coc-emmet',
-\ 'coc-eslint',
-\ 'coc-highlight',
-\ 'coc-html',
-\ 'coc-json',
-\ 'coc-python',
-\ 'coc-sh',
-\ 'coc-snippets',
-\ 'coc-tsserver',
-\ 'coc-ultisnips',
-\ 'coc-yaml'
+    \ 'coc-angular',
+    \ 'coc-css',
+    \ 'coc-cssmodules',
+    \ 'coc-emmet',
+    \ 'coc-highlight',
+    \ 'coc-html',
+    \ 'coc-json',
+    \ 'coc-python',
+    \ 'coc-sh',
+    \ 'coc-snippets',
+    \ 'coc-tsserver',
+    \ 'coc-ultisnips',
+    \ 'coc-yaml'
 \ ]
 
 " Allow project level configuration
