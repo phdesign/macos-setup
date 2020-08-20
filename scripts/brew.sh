@@ -13,7 +13,7 @@ function install_iterm {
         brew cask install iterm
         cat << EOM
 📝  TODO: Manually configure iTerm2
-    - iTerm2 > Preferences > Profiles > Other Actions > Import JSON Profiles > 'config/Tomorrow-Night-Eighties.json'
+    - iTerm2 > Preferences > Profiles > Other Actions > Import JSON Profiles > 'config/iterm-profile.json'
     - iTerm2 > Preferences > Appearance > General > Theme: Minimal
     - iTerm2 > Preferences > Appearance > Panes > Uncheck 'Show per-pane title bar with split panes'
     - iTerm2 > Preferences > Appearance > Dimmin > Uncheck 'Dim inactive split panes'
