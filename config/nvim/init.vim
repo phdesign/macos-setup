@@ -19,6 +19,7 @@ Plug 'leafgarland/typescript-vim'
 "Plug 'tomtom/tlib_vim'
 "Plug 'tpope/vim-fugitive'
 "Plug 'vim-scripts/hexHighlight.vim'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'jparise/vim-graphql'
 Plug 'leafgarland/typescript-vim'
 Plug 'airblade/vim-gitgutter'
@@ -127,14 +128,17 @@ nmap <silent> <leader>srw "_ciw<c-r>*<esc>
 " Close all buffers but this
 nmap <leader>bo :BufOnly<cr>
 " Reset indentation to 2 spaces
-nnoremap <leader>i2 :setlocal sts=2 ts=2 sw=2 et<cr>:IndentLinesReset<cr>
+nmap <leader>i2 :setlocal sts=2 ts=2 sw=2 et<cr>:IndentLinesReset<cr>
 " Reset indentation to 4 spaces
-nnoremap <leader>i4 :setlocal sts=4 ts=4 sw=4 et<cr>:IndentLinesReset<cr>
+nmap <leader>i4 :setlocal sts=4 ts=4 sw=4 et<cr>:IndentLinesReset<cr>
 " Insert new GUID at current position (relies on `npm install -g node-uuid`)
-nnoremap <leader>uu a<CR><ESC>:.-1read !uuid<CR>I<BS><ESC>j0i<BS><ESC>l
+nmap <leader>uu a<CR><ESC>:.-1read !uuid<CR>I<BS><ESC>j0i<BS><ESC>l
+" run prettier
+nmap <Leader>py <Plug>(Prettier)
 " don't automatically open first search result with silver searcher
 ca ag Ag!
 ca Ag Ag!
+
 if !has('win32')
     nmap <leader>g :silent !open %:p -a /Applications/Google\ Chrome.app/<cr>  " open in Google Chrome
 endif
@@ -286,6 +290,10 @@ let g:coc_global_extensions = [
     \ 'coc-ultisnips',
     \ 'coc-yaml'
 \ ]
+
+" Prettier
+let g:prettier#autoformat = 0       " Don't format on save
+let g:prettier#partial_format=1     " Format just the selection by default (PrettierPartial)
 
 " Allow project level configuration
 set exrc
