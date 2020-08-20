@@ -147,7 +147,8 @@ set laststatus=2           " show status bar even with no split
 let g:airline_powerline_fonts=1                 " use powerline fonts
 let g:airline#extensions#tabline#enabled=1      " enable the list of buffers
 let g:airline#extensions#tabline#fnamemod=':t'  " just show the filename
-let g:airline#extensions#gutentags#enabled = 1
+let g:airline#extensions#gutentags#enabled=1    " enable gutentags
+let g:airline#extensions#nerdtree_status=0      " disable airline on NERDTree
 
 function! AirlineInit()
   let g:airline_section_y=airline#section#create(['ffenc', ' ', '%{strftime("%I:%M%p")}'])
@@ -202,11 +203,10 @@ let g:blamer_enabled = 1
 " Gutentags
 " (thanks https://www.reddit.com/r/vim/comments/d77t6j/guide_how_to_setup_ctags_with_gutentags_properly/)
 let g:gutentags_ctags_executable_javascript = 'es-ctags'
-let g:gutentags_add_default_project_roots = 0
-let g:gutentags_project_root = ['package.json', '.git']
+"let g:gutentags_add_default_project_roots = 0
+"let g:gutentags_project_root = ['package.json', '.git']
 
 let g:gutentags_cache_dir = expand('~/.vim/tmp/ctags/')
-
 command! -nargs=0 GutentagsClearCache call system('rm ' . g:gutentags_cache_dir . '/*')
 
 let g:gutentags_generate_on_new = 1
