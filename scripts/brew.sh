@@ -59,12 +59,6 @@ EOM
     fi
 }
 
-function install_vscode {
-    if should_install vscode "has_application 'Visual Studio Code'"; then
-        brew cask install visual-studio-code
-    fi
-}
-
 function install_rectangle {
     if should_install rectangle "has_application 'Rectangle'"; then
         brew cask install rectangle
@@ -93,7 +87,6 @@ install_cask java
 install_beyond_compare
 install_typora
 #install_node
-install_vscode
 # TODO: Configure VS Code
 
 # Todo

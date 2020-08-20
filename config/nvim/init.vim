@@ -1,10 +1,6 @@
 " Load plugins with Plug
 call plug#begin(stdpath('data') . '/plugged')
 
-"Plug 'JulesWang/css.vim'
-"Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'MaxMEllon/vim-jsx-pretty'
-"Plug 'PProvost/vim-ps1'
 "Plug 'bkad/CamelCaseMotion'
 "Plug 'dearrrfish/vim-applescript'
 "Plug 'digitaltoad/vim-pug'
@@ -12,40 +8,45 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 "Plug 'genoma/vim-less'
 "Plug 'godlygeek/tabular'
 "Plug 'honza/vim-snippets'
-Plug 'leafgarland/typescript-vim'
+"Plug 'JulesWang/css.vim'
 "Plug 'majutsushi/tagbar'
+"Plug 'MarcWeber/vim-addon-mw-utils'
 "Plug 'mxw/vim-jsx'
 "Plug 'pangloss/vim-javascript'
+"Plug 'PProvost/vim-ps1'
+"Plug 'scrooloose/syntastic'
 "Plug 'tomtom/tlib_vim'
 "Plug 'tpope/vim-fugitive'
+"Plug 'vim-scripts/AutoComplPop'
 "Plug 'vim-scripts/hexHighlight.vim'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'jparise/vim-graphql'
-Plug 'leafgarland/typescript-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'APZelos/blamer.nvim'
 Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
+Plug 'djoshea/vim-autoread'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elzr/vim-json'
+Plug 'jparise/vim-graphql'
 Plug 'kien/ctrlp.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'leafgarland/typescript-vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mattn/emmet-vim'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'Raimondi/yaifa'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-"Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"Plug 'vim-scripts/AutoComplPop'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'vim-scripts/OnSyntaxChange'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'Yggdroot/indentLine'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
