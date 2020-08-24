@@ -36,6 +36,10 @@ function has_formulae {
     return $(brew ls --versions "$1" > /dev/null)
 }
 
+function has_cask {
+    return $(brew cask ls --version "$1" > /dev/null)
+}
+
 function has_application {
     return $(test -e "/Applications/$1.app")
 }
@@ -57,7 +61,7 @@ function install_formulae {
 
 function install_cask {
     local dependency="$1"
-    if should_install $dependency "has_command $dependency"; then
+    if should_install $dependency "has_cask $dependency"; then
         brew cask install $dependency
     fi
 }

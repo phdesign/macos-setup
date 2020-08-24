@@ -27,6 +27,8 @@ source ./lib/shared.sh
 
 source ./scripts/brew.sh
 
+source ./scripts/python.sh
+
 source ./scripts/vscode.sh
 
 source ./scripts/vim.sh

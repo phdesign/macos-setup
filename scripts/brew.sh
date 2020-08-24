@@ -33,7 +33,7 @@ function install_beyond_compare {
 }
 
 function install_node {
-    if should_install nvm "has_command nvm"; then
+    if should_install nvm "has_command nvm || has_command asdf"; then
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
         # Start nvm in current shell
         export NVM_DIR="$HOME/.nvm"
@@ -71,9 +71,6 @@ install_brew
 # Install GNU core utilities (those that come with OS X are outdated).
 install_formulae coreutils
 
-# Install Python
-install_formulae python
-
 # Command line tools
 install_formulae jq
 install_formulae the_silver_searcher
@@ -87,8 +84,7 @@ install_cask java
 install_beyond_compare
 install_typora
 install_cask iglance
-#install_node
-# TODO: Configure VS Code
+install_node
 
 # Todo
 # ----
