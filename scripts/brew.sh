@@ -86,6 +86,7 @@ install_iterm
 install_cask java
 install_beyond_compare
 install_typora
+install_cask iglance
 #install_node
 # TODO: Configure VS Code
 
