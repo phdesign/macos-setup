@@ -28,7 +28,6 @@ Plug 'elzr/vim-json'
 Plug 'jparise/vim-graphql'
 Plug 'kien/ctrlp.vim'
 Plug 'leafgarland/typescript-vim'
-Plug 'leafgarland/typescript-vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'mattn/emmet-vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
@@ -188,9 +187,9 @@ let g:ctrlp_show_hidden=1                       " let ctrl-p search hidden files
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components\|vendor'   " 
 
 " AutoComplPop
-call OnSyntaxChange#Install('Comment', '^Comment$', 0, 'i') 
-autocmd User SyntaxCommentEnterI silent! AcpLock 
-autocmd User SyntaxCommentLeaveI silent! AcpUnlock
+"call OnSyntaxChange#Install('Comment', '^Comment$', 0, 'i') 
+"autocmd User SyntaxCommentEnterI silent! AcpLock 
+"autocmd User SyntaxCommentLeaveI silent! AcpUnlock
 
 " Syntastic
 "set statusline+=%#warningmsg#
@@ -281,6 +280,7 @@ let g:coc_global_extensions = [
     \ 'coc-css',
     \ 'coc-cssmodules',
     \ 'coc-emmet',
+    \ 'coc-go',
     \ 'coc-highlight',
     \ 'coc-html',
     \ 'coc-json',
@@ -289,7 +289,7 @@ let g:coc_global_extensions = [
     \ 'coc-snippets',
     \ 'coc-tsserver',
     \ 'coc-ultisnips',
-    \ 'coc-yaml'
+    \ 'coc-yaml',
 \ ]
 
 " Prettier
