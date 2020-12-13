@@ -25,6 +25,7 @@ Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 Plug 'djoshea/vim-autoread'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elzr/vim-json'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'jparise/vim-graphql'
 Plug 'kien/ctrlp.vim'
 Plug 'leafgarland/typescript-vim'
@@ -97,6 +98,7 @@ set expandtab             " use spaces instead of tabs
 autocmd FileType html setlocal sts=2 ts=2 sw=2
 autocmd FileType javascript setlocal sts=2 ts=2 sw=2
 autocmd FileType less setlocal sts=2 ts=2 sw=2
+autocmd FileType go setlocal sts=4 ts=4 sw=4 noet nowrap
 autocmd FileType * setlocal formatoptions-=cro        " Disable auto insert comment after 'o' or 'O'
 let g:html_indent_inctags="html,body,head,tbody"
 
