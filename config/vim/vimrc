@@ -40,6 +40,7 @@ set linebreak               " don't split words when wrapping
 set synmaxcol=250           " improve performance when displaying super long lines
 set nostartofline           " stop jumping to start of line when switching buffer
 set colorcolumn=120         " show a column marker
+set showcmd                 " show number of selected lines
 
 " highlight the current line but only in active window
 augroup CursorLine
