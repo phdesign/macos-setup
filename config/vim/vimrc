@@ -51,6 +51,7 @@ augroup END
 if !has('win32')
     set gfn=Fira\ Code\ Light:h14
     set guifont=Fira\ Code\ Light:h14
+    set macligatures
     set guioptions=
     set directory=$HOME/.vim/tmp/
     set mouse=a
@@ -163,6 +164,13 @@ let g:coc_global_extensions = [
     \ 'coc-ultisnips',
     \ 'coc-yaml',
 \ ]
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
 " Allow project level configuration
 set exrc
