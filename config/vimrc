@@ -4,9 +4,14 @@ Plug 'airblade/vim-gitgutter'
 Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 Plug 'djoshea/vim-autoread'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'elzr/vim-json'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'kien/ctrlp.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'mattn/emmet-vim'
+Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
@@ -65,13 +70,18 @@ set tabstop=4             " tab spacing
 set softtabstop=4         " unify
 set shiftwidth=4          " indent/outdent by 4 columns
 set expandtab             " use spaces instead of tabs
+autocmd FileType html setlocal sts=2 ts=2 sw=2
+autocmd FileType javascript setlocal sts=2 ts=2 sw=2
+autocmd FileType less setlocal sts=2 ts=2 sw=2
 autocmd FileType go setlocal sts=4 ts=4 sw=4 noet nowrap
 autocmd FileType * setlocal formatoptions-=cro        " Disable auto insert comment after 'o' or 'O'
+let g:html_indent_inctags="html,body,head,tbody"
 
 " Commands
 command -range=% DeleteBlanks <line1>,<line2>g/^\s*$/d
 command -range=% DeleteTrailingSpaces <line1>,<line2>s/\s\+$
 command -range=% DeleteDuplicateLines <line1>,<line2>sort|<line1>,<line2>g/^\(.*\)\n\1$/d
+command -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " Mapping
 let mapleader = ","
@@ -87,6 +97,12 @@ nmap <leader>bo :BufOnly<cr>
 nmap <leader>i2 :setlocal sts=2 ts=2 sw=2 et<cr>:IndentLinesReset<cr>
 " Reset indentation to 4 spaces
 nmap <leader>i4 :setlocal sts=4 ts=4 sw=4 et<cr>:IndentLinesReset<cr>
+" Format document / selection with coc (e.g. Prettier)
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+" don't automatically open first search result with silver searcher
+ca ag Ag!
+ca Ag Ag!
 
 " Invisibles
 set listchars=tab:▸\ ,eol:¬
@@ -105,6 +121,9 @@ function! AirlineInit()
   let g:airline_section_y=airline#section#create(['ffenc', ' ', '%{strftime("%I:%M%p")}'])
 endfunction
 autocmd VimEnter * call AirlineInit()
+
+" vim-json
+let g:vim_json_syntax_conceal = 0
 
 " VIM Session
 let g:session_autoload='no'
@@ -128,12 +147,22 @@ let g:ctrlp_show_hidden=1                       " let ctrl-p search hidden files
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components\|vendor'   " 
 
 " Conquer of Completion (coc)
-let g:coc_node_path = '/Users/paul/.nvm/versions/node/v14.8.0/bin/node'
+"let g:coc_node_path = '/Users/paul/.nvm/versions/node/v14.8.0/bin/node'
 let g:coc_global_extensions = [
+    \ 'coc-css',
+    \ 'coc-cssmodules',
+    \ 'coc-emmet',
     \ 'coc-go',
     \ 'coc-highlight',
+    \ 'coc-html',
+    \ 'coc-json',
+    \ 'coc-prettier',
+    \ 'coc-python',
+    \ 'coc-sh',
     \ 'coc-snippets',
+    \ 'coc-tsserver',
     \ 'coc-ultisnips',
+    \ 'coc-yaml',
 \ ]
 
 " Allow project level configuration
