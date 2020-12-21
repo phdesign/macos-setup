@@ -19,7 +19,7 @@ function install_vim_plug {
         sh -c "curl -fLo \"$dest\" --create-dirs \
            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
         echo "✅  Installing vim plugins..."
-        vim -es -u vimrc -i NONE -c "PlugInstall" -c "qa" || true
+        vim -es -u ~/.vimrc -i NONE -c "PlugInstall" -c "qa" || true
     fi
 }
 
@@ -28,7 +28,7 @@ function configure_vim_docs {
     if should_configure vim-docs "has_folder \"$vim_docs_dir\""; then
         mkdir -p $vim_docs_dir
         ln -s $(pwd)/config/vim-cheatsheet.txt $vim_docs_dir
-        vim -es -u vimrc -i NONE -c "helptags $vim_docs_dir" -c "qa" || true
+        vim -es -u ~/.vimrc -i NONE -c "helptags $vim_docs_dir" -c "qa" || true
     fi
 }
 
