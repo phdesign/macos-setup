@@ -1,2 +1,12 @@
 {
+  "coc.preferences.formatOnSaveFiletypes": [
+    "typescript",
+    "typescriptreact",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "python"
+  ],
+  "python.venvFolders": ["envs", ".pyenv", ".direnv", ".venv"],
+  "python.formatting.blackArgs": ["-l", "120"]
 }
