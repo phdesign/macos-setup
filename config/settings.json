@@ -25,10 +25,20 @@
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "python.languageServer": "Microsoft",
+    "python.languageServer": "Jedi",
     "python.pythonPath": "/usr/local/bin/python3",
     "jupyter.alwaysTrustNotebooks": true,
     "[html]": {
         "editor.defaultFormatter": "vscode.html-language-features"
-    }
+    },
+    "python.defaultInterpreterPath": "/usr/local/bin/python3",
+    "[python]": {
+        "editor.formatOnSave": true
+    },
+    "debug.javascript.terminalOptions": {
+        "skipFiles": [
+          "<node_internals>/**"
+        ]
+      },
+    
 }

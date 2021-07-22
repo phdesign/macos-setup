@@ -62,7 +62,7 @@ function install_formulae {
 function install_cask {
     local dependency="$1"
     if should_install $dependency "has_command $dependency"; then
-        brew cask install $dependency
+        brew install --cask $dependency
     fi
 }
 
