@@ -74,6 +74,7 @@ set shiftwidth=4          " indent/outdent by 4 columns
 set expandtab             " use spaces instead of tabs
 autocmd FileType html setlocal sts=2 ts=2 sw=2
 autocmd FileType javascript setlocal sts=2 ts=2 sw=2
+autocmd FileType typescript setlocal sts=2 ts=2 sw=2
 autocmd FileType less setlocal sts=2 ts=2 sw=2
 autocmd FileType go setlocal sts=4 ts=4 sw=4 noet nowrap
 autocmd FileType * setlocal formatoptions-=cro        " Disable auto insert comment after 'o' or 'O'
