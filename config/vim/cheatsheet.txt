@@ -24,6 +24,7 @@ Using marks               |cheatsheet_marks|
 Batch commands            |cheatsheet_batch|
 Examples                  |cheatsheet_examples|
 Colour schemes            |cheatsheet_colourschemes|
+Coc                       |cheatsheet_coc|
 References                |cheatsheet_references|
 Todo                      |cheatsheet_todo|
 
@@ -277,6 +278,14 @@ COLOUR SCHEMES                                        *cheatsheet_colourschemes*
    * Tomorrow-Night-Eighties
    * iceberg
    * atom
+
+==============================================================================
+COC                                                             *cheatsheet_coc*
+
+Apply quickfix
+>
+    :CocAction
+<
 
 ==============================================================================
 REFERENCES                                               *cheatsheet_references*
