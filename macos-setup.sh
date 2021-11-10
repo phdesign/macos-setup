@@ -31,6 +31,8 @@ source ./scripts/python.sh
 
 source ./scripts/vscode.sh
 
+source ./scripts/nvim.sh
+
 source ./scripts/vim.sh
 
 source ./scripts/ohmyzsh.sh
