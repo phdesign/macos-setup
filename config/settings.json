@@ -25,7 +25,7 @@
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "python.languageServer": "Microsoft",
+    "python.languageServer": "Jedi",
     "python.pythonPath": "/usr/local/bin/python3",
     "jupyter.alwaysTrustNotebooks": true,
     "liveshare.authenticationProvider": "Microsoft",
