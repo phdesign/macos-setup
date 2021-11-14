@@ -240,7 +240,6 @@ let g:gutentags_ctags_exclude = [
 
 " Conquer of Completion (coc)
 let g:coc_global_extensions = [
-    \ 'coc-apollo',
     \ 'coc-css',
     \ 'coc-cssmodules',
     \ 'coc-emmet',
