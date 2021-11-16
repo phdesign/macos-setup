@@ -38,7 +38,7 @@ function install_nvim_plug {
 }
 
 install_formulae neovim
-install_cask vimr
+#install_cask vimr
 install_ctags
 #install_esctags
 configure_nvim
