@@ -2,7 +2,6 @@
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'airblade/vim-gitgutter'
-Plug 'APZelos/blamer.nvim'
 Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 Plug 'djoshea/vim-autoread'
 Plug 'editorconfig/editorconfig-vim'
@@ -167,9 +166,6 @@ let g:ctrlp_working_path_mode='ra'              " use the nearest .git directory
 let g:ctrlp_cmd='CtrlPMixed'                    " start ctrl-p in mixed mode 
 let g:ctrlp_show_hidden=1                       " let ctrl-p search hidden files (e.g. .gitignore)
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components\|vendor'   " 
-
-" Blamer.nvim
-let g:blamer_enabled = 1
 
 " Gutentags
 " (thanks https://www.reddit.com/r/vim/comments/d77t6j/guide_how_to_setup_ctags_with_gutentags_properly/)
