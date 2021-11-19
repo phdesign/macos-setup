@@ -117,6 +117,8 @@ nmap <leader>bo :BufOnly<cr>
 nmap <leader>i2 :setlocal sts=2 ts=2 sw=2 et<cr>:IndentLinesReset<cr>
 " Reset indentation to 4 spaces
 nmap <leader>i4 :setlocal sts=4 ts=4 sw=4 et<cr>:IndentLinesReset<cr>
+" Insert new GUID at current position (relies on python)
+nmap <silent><leader>uu "=system('python -c "import uuid; print(uuid.uuid4(), end=\"\");"')<CR>p
 " Format document / selection with coc (e.g. Prettier)
 vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
