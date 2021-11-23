@@ -9,7 +9,6 @@ Plug 'elzr/vim-json'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'kien/ctrlp.vim'
 Plug 'leafgarland/typescript-vim'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'mattn/emmet-vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -119,9 +118,7 @@ nmap <leader>i2 :setlocal sts=2 ts=2 sw=2 et<cr>:IndentLinesReset<cr>
 nmap <leader>i4 :setlocal sts=4 ts=4 sw=4 et<cr>:IndentLinesReset<cr>
 " Insert new GUID at current position (relies on python)
 nmap <silent><leader>uu "=system('python -c "import uuid; print(uuid.uuid4(), end=\"\");"')<CR>p
-" Format document / selection with coc (e.g. Prettier)
-vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+
 " don't automatically open first search result with silver searcher
 ca ag Ag!
 ca Ag Ag!
@@ -136,7 +133,6 @@ set laststatus=2           " show status bar even with no split
 let g:airline_powerline_fonts=1                 " use powerline fonts
 let g:airline#extensions#tabline#enabled=1      " enable the list of buffers
 let g:airline#extensions#tabline#fnamemod=':t'  " just show the filename
-let g:airline#extensions#gutentags#enabled=1    " enable gutentags
 let g:airline#extensions#nerdtree_status=0      " disable airline on NERDTree
 
 function! AirlineInit()
@@ -169,73 +165,6 @@ let g:ctrlp_cmd='CtrlPMixed'                    " start ctrl-p in mixed mode
 let g:ctrlp_show_hidden=1                       " let ctrl-p search hidden files (e.g. .gitignore)
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components\|vendor'   " 
 
-" Gutentags
-" (thanks https://www.reddit.com/r/vim/comments/d77t6j/guide_how_to_setup_ctags_with_gutentags_properly/)
-let g:gutentags_ctags_executable_javascript = 'es-ctags'
-"let g:gutentags_add_default_project_roots = 0
-"let g:gutentags_project_root = ['package.json', '.git']
-
-let g:gutentags_cache_dir = stdpath('data') . '/tmp/ctags/'
-command! -nargs=0 GutentagsClearCache call system('rm ' . g:gutentags_cache_dir . '/*')
-
-let g:gutentags_generate_on_new = 1
-let g:gutentags_generate_on_missing = 1
-let g:gutentags_generate_on_write = 1
-let g:gutentags_generate_on_empty_buffer = 0
-
-let g:gutentags_ctags_extra_args = [
-      \ '--tag-relative=yes',
-      \ '--fields=+ailmnS',
-      \ ]
-
-let g:gutentags_ctags_exclude = [
-      \ '*.git', '*.svg', '*.hg',
-      \ '*/tests/*',
-      \ 'build',
-      \ 'dist',
-      \ '*sites/*/files/*',
-      \ 'bin',
-      \ 'node_modules',
-      \ 'bower_components',
-      \ 'cache',
-      \ 'compiled',
-      \ 'docs',
-      \ 'example',
-      \ 'bundle',
-      \ 'vendor',
-      \ '*.md',
-      \ '*-lock.json',
-      \ '*.lock',
-      \ '*bundle*.js',
-      \ '*build*.js',
-      \ '.*rc*',
-      \ '*.json',
-      \ '*.min.*',
-      \ '*.map',
-      \ '*.bak',
-      \ '*.zip',
-      \ '*.pyc',
-      \ '*.class',
-      \ '*.sln',
-      \ '*.Master',
-      \ '*.csproj',
-      \ '*.tmp',
-      \ '*.csproj.user',
-      \ '*.cache',
-      \ '*.pdb',
-      \ 'tags*',
-      \ 'cscope.*',
-      \ '*.css',
-      \ '*.less',
-      \ '*.scss',
-      \ '*.exe', '*.dll',
-      \ '*.mp3', '*.ogg', '*.flac',
-      \ '*.swp', '*.swo',
-      \ '*.bmp', '*.gif', '*.ico', '*.jpg', '*.png',
-      \ '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
-      \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
-      \ ]
-
 " Conquer of Completion (coc)
 let g:coc_global_extensions = [
     \ 'coc-css',
@@ -255,11 +184,12 @@ let g:coc_global_extensions = [
 \ ]
 
 " Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
+inoremap <silent><expr> <c-space> coc#refresh()
+" use ,k to show type help
+nmap <silent> <leader>k :call CocAction('doHover')<cr>
+" Format document / selection with coc (e.g. Prettier)
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 " Allow project level configuration
 set exrc

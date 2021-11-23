@@ -2,12 +2,6 @@
 
 set -eu
 
-function install_ctags {
-    if should_install universal-ctags "has_formulae universal-ctags"; then
-        brew install --HEAD universal-ctags/universal-ctags/universal-ctags
-    fi
-}
-
 function configure_nvim {
     if should_configure vim "has_folder \"$HOME/.config/nvim\""; then
         ln -s $(pwd)/config/nvim ~/.config
@@ -39,8 +33,6 @@ function install_nvim_plug {
 
 install_formulae neovim
 #install_cask vimr
-install_ctags
-#install_esctags
 configure_nvim
 install_nvim_plug
 configure_nvim_docs
