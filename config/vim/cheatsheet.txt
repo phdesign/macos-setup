@@ -86,6 +86,11 @@ COPY AND PASTE                                           *cheatsheet_copy_paste*
 ,p                  Paste system clipboard to line below
 ,P                  Paste system clipboard to line above
 ,r                  Replace this word with previously copied text
+>
+    :redir @+
+    :echo @%
+    :redir END
+<                    Copy the current filename to the clipboard 
 
 ==============================================================================
 SEARCH AND REPLACE                                   *cheatsheet_search_replace*

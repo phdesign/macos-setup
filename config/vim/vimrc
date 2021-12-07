@@ -152,7 +152,6 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components\|vend
 
 " Conquer of Completion (coc)
 let g:coc_global_extensions = [
-    \ 'coc-apollo',
     \ 'coc-css',
     \ 'coc-cssmodules',
     \ 'coc-emmet',

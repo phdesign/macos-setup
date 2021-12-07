@@ -9,5 +9,6 @@
   ],
   "python.venvFolders": ["envs", ".pyenv", ".direnv", ".venv"],
   "python.formatting.provider": "black",
-  "python.formatting.blackArgs": ["-l", "120"]
+  "python.formatting.blackArgs": ["-l", "120"],
+  "python.linting.flake8Enabled": true
 }
