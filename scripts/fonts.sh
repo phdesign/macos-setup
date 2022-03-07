@@ -8,7 +8,7 @@ function install_font {
 
     if should_install $font "test -n \"\$(find $HOME/Library/Fonts -maxdepth 1 -name '$file*' -print -quit)\" \
         || test -n \"\$(find /System/Library/Fonts -maxdepth 1 -name '$file*' -print -quit)\""; then
-        brew cask install $font
+        brew install $font --cask
     fi
 }
 

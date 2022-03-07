@@ -4,7 +4,7 @@ set -eu
 
 function install_vscode {
     if should_install vscode "has_application 'Visual Studio Code'"; then
-        brew cask install visual-studio-code
+        brew install visual-studio-code --cask
 
         code --install-extension baeumer.vscode-eslint
         code --install-extension amodio.gitlens

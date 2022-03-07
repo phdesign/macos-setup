@@ -37,7 +37,7 @@ function has_formulae {
 }
 
 function has_cask {
-    return $(brew cask ls --version "$1" > /dev/null)
+    return $(brew ls --cask --version "$1" > /dev/null)
 }
 
 function has_application {
