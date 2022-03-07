@@ -68,15 +68,6 @@ function install_rectangle {
 # Install homebrew first
 install_brew
 
-# Install GNU core utilities (those that come with OS X are outdated).
-install_formulae coreutils
-
-# Command line tools
-install_formulae jq
-install_formulae the_silver_searcher
-install_formulae tree
-install_formulae z
-
 # Install applications
 install_rectangle   # Rectangle is a window resizer app
 install_iterm

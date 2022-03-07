@@ -33,9 +33,9 @@ source ./scripts/vscode.sh
 
 source ./scripts/nvim.sh
 
-source ./scripts/vim.sh
+#source ./scripts/vim.sh
 
-source ./scripts/ohmyzsh.sh
+source ./scripts/shell.sh
 
 source ./scripts/fonts.sh
 

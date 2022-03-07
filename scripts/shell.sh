@@ -11,7 +11,7 @@ function install_ohmyzsh {
 
         cat >> ~/.zshrc <<- EOM
 # Set default user to hide it in the prompt
-DEFAULT_USER="paul.heasley"
+export DEFAULT_USER="$(whoami)"
 
 # Shorten longs paths
 prompt_dir() {
@@ -37,6 +37,15 @@ function configure_z {
     fi
 }
 
+# Install GNU core utilities (those that come with OS X are outdated).
+install_formulae coreutils
+
+# Command line tools
+install_formulae jq
+install_formulae the_silver_searcher
+install_formulae tree
 install_ohmyzsh
 install_autosuggestions
+install_formulae z
 configure_z
+install_formulae fzf
