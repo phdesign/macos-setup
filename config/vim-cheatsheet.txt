@@ -22,6 +22,7 @@ Emmet                     |cheatsheet_emmet|
 Multiple Cursors          |cheatsheet_multiple_cursors|
 Using marks               |cheatsheet_marks|
 Batch commands            |cheatsheet_batch|
+Commands                  |cheatsheet_commands|
 Examples                  |cheatsheet_examples|
 Colour schemes            |cheatsheet_colourschemes|
 Coc                       |cheatsheet_coc|
@@ -200,12 +201,15 @@ EMMET                                                         *cheatsheet_emmet*
 ==============================================================================
 MULTIPLE CURSORS                                   *cheatsheet_multiple_cursors*
 
-<c-n>               Select next instance of word under cusor, then...
+<c-n>               Select next instance of word under cusor
+n / N               Add next / previous occurrance
+[ / ]               Select next / previous cursor  
+q                   Skip this occurrance
+Q                   Undo selecting this instance and go back to last
 c                   Change all instances of word
 s                   Delete instances of word
-v                   Switch to visual mode, then any visual command (i, I, a, A)
+(i, I, a, A)        Insert / append text
 <c-p>               Undo selecting this instance and go back to last
-<c-x>               Skip this instance
 
 ==============================================================================
 USING MARKS                                                   *cheatsheet_marks*
@@ -246,13 +250,20 @@ BATCH COMMANDS                                                *cheatsheet_batch*
 <                   For every file in args, run the 'q' macro
 
 ==============================================================================
+COMMANDS                                                   *cheatsheet_commands*
+>
+    :enew|pu=execute('map') 
+<                   Print the results of vim comment (e.g. map) to a new
+                   buffer
+
+==============================================================================
 EXAMPLES                                                   *cheatsheet_examples*
 >
     %s/\nAuthor:/ Author:/g
     %v/\(^D|jackr|scottb|paul.heasley|anitah\)/d
 <                    Phabricator filter commits
 >
-:'<,'>s/^/\=(line('.') - 6).'. '
+    :'<,'>s/^/\=(line('.') - 6).'. '
 <                    Insert line numbers at start of line for selection
 
 >
