@@ -4,16 +4,15 @@ set -eu
 
 function install_vscode {
     if should_install vscode "has_application 'Visual Studio Code'"; then
-        brew cask install visual-studio-code
+        brew install visual-studio-code --cask
 
-        code --install-extension baeumer.vscode-eslint
-        code --install-extension amodio.gitlens
-        code --install-extension sbenp.prettier-vscode
-        code --install-extension kjustjoshing.vscode-text-pastry
-        code --install-extension s-vsliveshare.vsliveshare
-        code --install-extension s-vsliveshare.vsliveshare-audio
-        code --install-extension s-vsliveshare.vsliveshare-pack
-        code --install-extension scodevim.vim
+        code --install-extension dbaeumer.vscode-eslint
+        code --install-extension eamodio.gitlens
+        code --install-extension esbenp.prettier-vscode
+        code --install-extension ms-vsliveshare.vsliveshare
+        code --install-extension ms-vsliveshare.vsliveshare-audio
+        code --install-extension ms-vsliveshare.vsliveshare-pack
+        code --install-extension vscodevim.vim
 
         mkdir -p "$HOME/Library/Application Support/Code/User"
         ln -s $(pwd)/config/settings.json  "$HOME/Library/Application Support/Code/User"

@@ -10,7 +10,7 @@ function install_brew {
 
 function install_iterm {
     if should_install iterm "has_application 'iTerm'"; then
-        brew cask install iterm
+        brew install iterm --cask
         cat << EOM
 📝  TODO: Manually configure iTerm2
     - iTerm2 > Preferences > Profiles > Other Actions > Import JSON Profiles > 'config/iterm-profile.json'
@@ -23,7 +23,7 @@ EOM
 
 function install_beyond_compare {
     if should_install beyond-compare "has_application 'Beyond Compare'"; then
-        brew cask install beyond-compare
+        brew install beyond-compare --cask
         echo "📝  TODO: Enter Beyond Compare license"
         if [ ! has_command bcompare ]; then
             ln -s /Applications/Beyond\ Compare.app/Contents/MacOS/bcomp /usr/local/bin/bcompare
@@ -45,7 +45,7 @@ function install_node {
 
 function install_typora {
     if should_install typora "has_application 'Typora'"; then
-        brew cask install typora
+        brew install typora --cask
         curl -b cookies.txt -L \
             "https://github.com/elitistsnob/typora-gitlab-theme/releases/download/v1.1/typora-gitlab-theme-master-updated.zip" \
             -o typora-gitlab-theme-master-updated.zip
@@ -61,21 +61,12 @@ EOM
 
 function install_rectangle {
     if should_install rectangle "has_application 'Rectangle'"; then
-        brew cask install rectangle
+        brew install rectangle --cask
     fi
 }
 
 # Install homebrew first
 install_brew
-
-# Install GNU core utilities (those that come with OS X are outdated).
-install_formulae coreutils
-
-# Command line tools
-install_formulae jq
-install_formulae the_silver_searcher
-install_formulae tree
-install_formulae z
 
 # Install applications
 install_rectangle   # Rectangle is a window resizer app
