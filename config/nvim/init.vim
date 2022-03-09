@@ -14,7 +14,6 @@ Plug 'mattn/emmet-vim'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'mg979/vim-visual-multi'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'Raimondi/yaifa'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -166,12 +165,15 @@ let g:ctrlp_cmd='CtrlPMixed'                    " start ctrl-p in mixed mode
 let g:ctrlp_show_hidden=1                       " let ctrl-p search hidden files (e.g. .gitignore)
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components\|vendor'   " 
 
+" vim-go
+let g:go_fmt_autosave = 1
+let g:go_imports_autosave = 1
+
 " Conquer of Completion (coc)
 let g:coc_global_extensions = [
     \ 'coc-css',
     \ 'coc-cssmodules',
     \ 'coc-emmet',
-    \ 'coc-go',
     \ 'coc-highlight',
     \ 'coc-html',
     \ 'coc-json',
@@ -208,3 +210,5 @@ set exrc
 " Prevent :autocmd, shell and write commands
 set secure
 
+" Enable fzf
+set rtp+=/opt/homebrew/opt/fzf
