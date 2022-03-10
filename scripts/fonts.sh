@@ -23,5 +23,5 @@ install_cask_fonts
 install_font font-fira-code FiraCode
 install_font font-fira-mono FiraMono
 install_font font-fira-sans FiraSans
-install_font font-dejavu-sans-mono-for-powerline "DejaVu Sans Mono for Powerline"
+#install_font font-dejavu-sans-mono-for-powerline "DejaVu Sans Mono for Powerline"
 

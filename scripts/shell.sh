@@ -17,7 +17,15 @@ export DEFAULT_USER="$(whoami)"
 prompt_dir() {
   prompt_segment blue $CURRENT_FG '%(5~|%-1~/…/%3~|%4~)'
 }
+
+# Install z jump
+. /opt/homebrew/etc/profile.d/z.sh
+
+# Install fzf fuzzy completion
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 EOM
+
+        echo ". $(brew --prefix)/opt/asdf/libexec/asdf.sh" >> ~/.zshenv
     fi
 }
 
@@ -49,3 +57,4 @@ install_autosuggestions
 install_formulae z
 configure_z
 install_formulae fzf
+install_formulae gh

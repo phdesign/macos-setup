@@ -168,12 +168,15 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components\|vend
 " vim-go
 let g:go_fmt_autosave = 1
 let g:go_imports_autosave = 1
+let g:go_metalinter_command = 'golangci-lint'
+let g:go_metalinter_autosave = 1
 
 " Conquer of Completion (coc)
 let g:coc_global_extensions = [
     \ 'coc-css',
     \ 'coc-cssmodules',
     \ 'coc-emmet',
+    \ 'coc-go',
     \ 'coc-highlight',
     \ 'coc-html',
     \ 'coc-json',
@@ -189,7 +192,7 @@ let g:coc_global_extensions = [
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 " CocFix mapped to Alt-Enter
-map <a-cr>=^[^M
+"map <a-cr>=^[^M
 nmap <silent> <a-cr> :CocFix<CR>
 " use ,k to show type help
 nmap <silent> <leader>k :call CocAction('doHover')<cr>

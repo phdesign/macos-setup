@@ -74,7 +74,7 @@ install_iterm
 install_cask java
 install_beyond_compare
 install_typora
-install_node
+#install_node
 
 # Todo
 # ----
