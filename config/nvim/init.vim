@@ -3,7 +3,9 @@ call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
+Plug 'christoomey/vim-sort-motion'
 Plug 'djoshea/vim-autoread'
+Plug 'dsimidzija/vim-nerdtree-ignore'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elzr/vim-json'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -41,7 +43,7 @@ set hidden                  " allow switching buffers without saving
 set linebreak               " don't split words when wrapping
 set synmaxcol=250           " improve performance when displaying super long lines
 set nostartofline           " stop jumping to start of line when switching buffer
-set colorcolumn=120         " show a column marker
+set colorcolumn=80          " show a column marker
 set showcmd                 " show number of selected lines
 
 " highlight the current line but only in active window
@@ -96,6 +98,8 @@ let mapleader = ","
 vmap <leader>t :s/\%V\<\(\w\)\(\w*\)\>/\u\1\L\2/ge<bar>noh<cr>
 " sort lines
 map <leader>s :'<,'>sort i<cr>
+" sort javascript object by keys
+map <leader>sj :!node -r 'process' -e 'process.stdin.on("data", data => console.log(JSON.stringify(eval(`(${data})`))))' \| jq --sort-keys -c '.'<cr>
 " delete blank lines
 map <leader>db :DeleteBlanks<cr>
 " close buffer and switch to previous
@@ -161,7 +165,7 @@ autocmd SessionLoadPost * exe 'vert 1resize 31'
 
 " Ctrl-P
 let g:ctrlp_working_path_mode='ra'              " use the nearest .git directory as the cwd
-let g:ctrlp_cmd='CtrlPMixed'                    " start ctrl-p in mixed mode 
+let g:ctrlp_cmd='CtrlPMRU'                      " start ctrl-p in mru mode 
 let g:ctrlp_show_hidden=1                       " let ctrl-p search hidden files (e.g. .gitignore)
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components\|vendor'   " 
 
@@ -171,11 +175,15 @@ let g:go_imports_autosave = 1
 let g:go_metalinter_command = 'golangci-lint'
 let g:go_metalinter_autosave = 1
 
+" EditorConfig
+let g:EditorConfig_disable_rules = ['max_line_length']
+
 " Conquer of Completion (coc)
 let g:coc_global_extensions = [
     \ 'coc-css',
     \ 'coc-cssmodules',
     \ 'coc-emmet',
+    \ 'coc-eslint',
     \ 'coc-go',
     \ 'coc-highlight',
     \ 'coc-html',
@@ -208,10 +216,10 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+" Enable fzf
+set rtp+=/opt/homebrew/opt/fzf
+
 " Allow project level configuration
 set exrc
 " Prevent :autocmd, shell and write commands
 set secure
-
-" Enable fzf
-set rtp+=/opt/homebrew/opt/fzf
