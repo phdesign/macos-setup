@@ -7,7 +7,6 @@ Plug 'christoomey/vim-sort-motion'
 Plug 'djoshea/vim-autoread'
 Plug 'dsimidzija/vim-nerdtree-ignore'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'elzr/vim-json'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'github/copilot.vim'
 Plug 'kien/ctrlp.vim'
@@ -144,8 +143,10 @@ function! AirlineInit()
 endfunction
 autocmd VimEnter * call AirlineInit()
 
-" vim-json
-let g:vim_json_syntax_conceal = 0
+" indentLine 
+" Fix indentLine concealing characters in json and md
+let g:vim_json_conceal=0
+let g:markdown_syntax_conceal=0
 
 " VIM Session
 let g:session_autoload='no'
