@@ -188,6 +188,7 @@ let g:coc_global_extensions = [
     \ 'coc-go',
     \ 'coc-highlight',
     \ 'coc-html',
+    \ 'coc-jest',
     \ 'coc-json',
     \ 'coc-prettier',
     \ 'coc-pyright',
@@ -201,8 +202,9 @@ let g:coc_global_extensions = [
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 " CocFix mapped to Alt-Enter
-"map <a-cr>=^[^M
-nmap <silent> <a-cr> :CocFix<CR>
+nmap <silent> <a-cr> <Plug>(coc-fix-current)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
 " use ,k to show type help
 nmap <silent> <leader>k :call CocAction('doHover')<cr>
 " Format document / selection with coc (e.g. Prettier)
@@ -216,6 +218,16 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" coc-jest
+" Run jest for current project
+command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
+" Run jest for current file
+command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
+" Run jest for current test
+nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
+" Init jest in current cwd, require global jest command exists
+command! JestInit :call CocAction('runCommand', 'jest.init')
 
 " Enable fzf
 set rtp+=/opt/homebrew/opt/fzf
