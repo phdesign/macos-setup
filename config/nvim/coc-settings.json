@@ -9,7 +9,11 @@
   ],
   "python.venvFolders": ["envs", ".pyenv", ".direnv", ".venv"],
   "python.formatting.provider": "black",
-  "python.formatting.blackArgs": ["-l", "120"],
+  "python.formatting.blackArgs": ["-l", "80"],
   "python.linting.flake8Enabled": true,
-  "eslint.nodeEnv": "test"
+  "python.linting.flake8Args": ["--max-line-length=88", "--ignore=E203,W503"],
+  "python.linting.pylintEnabled": false,
+  "python.linting.enabled": true,
+  "eslint.nodeEnv": "test",
+  "inlayHint.enable": false
 }

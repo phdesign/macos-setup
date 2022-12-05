@@ -1,18 +1,18 @@
 " Load plugins with Plug
 call plug#begin(stdpath('data') . '/plugged')
 
-Plug 'airblade/vim-gitgutter'
+"Plug 'airblade/vim-gitgutter'
 Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 Plug 'christoomey/vim-sort-motion'
-Plug 'djoshea/vim-autoread'
+"Plug 'djoshea/vim-autoread'
 Plug 'dsimidzija/vim-nerdtree-ignore'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'github/copilot.vim'
 Plug 'kien/ctrlp.vim'
-Plug 'leafgarland/typescript-vim'
+"Plug 'leafgarland/typescript-vim'
 Plug 'mattn/emmet-vim'
-Plug 'MaxMEllon/vim-jsx-pretty'
+"Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'mg979/vim-visual-multi'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rking/ag.vim'
@@ -201,6 +201,8 @@ let g:coc_global_extensions = [
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
+" Enter to confirm completion.
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 " CocFix mapped to Alt-Enter
 nmap <silent> <a-cr> <Plug>(coc-fix-current)
 " Apply AutoFix to problem on the current line.
