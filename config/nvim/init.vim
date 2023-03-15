@@ -1,21 +1,24 @@
 " Load plugins with Plug
 call plug#begin(stdpath('data') . '/plugged')
 
-"Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
+Plug 'ap/vim-css-color'
 Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 Plug 'christoomey/vim-sort-motion'
-"Plug 'djoshea/vim-autoread'
+Plug 'djoshea/vim-autoread'
 Plug 'dsimidzija/vim-nerdtree-ignore'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'github/copilot.vim'
 Plug 'hashivim/vim-terraform'
+Plug 'jparise/vim-graphql'
 Plug 'kien/ctrlp.vim'
-"Plug 'leafgarland/typescript-vim'
+Plug 'leafgarland/typescript-vim'
 Plug 'mattn/emmet-vim'
-"Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'mg979/vim-visual-multi'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'pangloss/vim-javascript'
 Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
@@ -169,7 +172,10 @@ autocmd SessionLoadPost * exe 'vert 1resize 31'
 let g:ctrlp_working_path_mode='ra'              " use the nearest .git directory as the cwd
 let g:ctrlp_cmd='CtrlPMRU'                      " start ctrl-p in mru mode 
 let g:ctrlp_show_hidden=1                       " let ctrl-p search hidden files (e.g. .gitignore)
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components\|vendor'   " 
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\v[\/](node_modules||git|bower_components|vendor|cdk.out)$',
+    \ 'file': '\v\.(DS_Store)$',
+\ }
 
 " vim-go
 let g:go_fmt_autosave = 1
@@ -224,6 +230,10 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" Jump between locations
+nmap <silent> <c-l> :CocNext<cr>
+nmap <silent> <c-h> :CocPrev<cr>
 
 " coc-jest
 " Run jest for current project
