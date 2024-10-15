@@ -10,7 +10,7 @@ function install_brew {
 
 function install_iterm {
     if should_install iterm "has_application 'iTerm'"; then
-        brew install iterm --cask
+        brew install iterm2 --cask
         cat << EOM
 📝  TODO: Manually configure iTerm2
     - iTerm2 > Preferences > Profiles > Other Actions > Import JSON Profiles > 'config/iterm-profile.json'
