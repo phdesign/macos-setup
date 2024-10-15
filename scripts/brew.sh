@@ -14,9 +14,10 @@ function install_iterm {
         cat << EOM
 📝  TODO: Manually configure iTerm2
     - iTerm2 > Preferences > Profiles > Other Actions > Import JSON Profiles > 'config/iterm-profile.json'
+    - iTerm2 > Preferences > General > Closing > Uncheck Confirm "Quit iTerm2" and check "Quit when all windows are closed"
     - iTerm2 > Preferences > Appearance > General > Theme: Minimal
     - iTerm2 > Preferences > Appearance > Panes > Uncheck 'Show per-pane title bar with split panes'
-    - iTerm2 > Preferences > Appearance > Dimmin > Uncheck 'Dim inactive split panes'
+    - iTerm2 > Preferences > Appearance > Dimming > Uncheck 'Dim inactive split panes'
 EOM
     fi
 }
