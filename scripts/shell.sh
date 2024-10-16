@@ -9,7 +9,7 @@ function install_ohmyzsh {
         # Setup theme
         sed -i '' 's/^ZSH_THEME=.*$/ZSH_THEME="agnoster"/g' ~/.zshrc
 
-        cat >> ~/.zshrc <<- EOM
+        cat >> ~/.zshrc <<- "EOM"
 # Set default user to hide it in the prompt
 export DEFAULT_USER="$(whoami)"
 
@@ -23,9 +23,12 @@ prompt_dir() {
 
 # Install fzf fuzzy completion
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+alias uuid='python3 -c "import uuid; print(uuid.uuid4())"'
+alias dequote='python3 -c '\''import sys; print(sys.stdin.read().decode("unicode_escape"))'\'
 EOM
 
-        echo ". $(brew --prefix)/opt/asdf/libexec/asdf.sh" >> ~/.zshenv
+        # echo ". $(brew --prefix)/opt/asdf/libexec/asdf.sh" >> ~/.zshenv
     fi
 }
 
@@ -57,4 +60,4 @@ install_autosuggestions
 install_formulae z
 configure_z
 install_formulae fzf
-install_formulae gh
+# install_formulae gh
