@@ -90,4 +90,4 @@ install_typora
 # - Fork
 # - Insomnia
 # - Dropbox
-
+# - Obsidian Notes

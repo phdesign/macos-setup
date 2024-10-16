@@ -1,42 +1,47 @@
 {
-    "editor.renderWhitespace": "selection",
-    "[json]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
-    },
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "files.autoSave": "onFocusChange",
-    "omnisharp.useEditorFormattingSettings": false,
-    "python.jediEnabled": false,
-    "editor.renderControlCharacters": false,
-    "editor.fontFamily": "'Fira Code', 'DejaVu Sans Mono', Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontSize": 14,
-    "editor.lineHeight": 18,
-    "window.zoomLevel": 0,
-    "terminal.integrated.fontSize": 14,
-    "[jsonc]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "liveshare.allowGuestDebugControl": true,
-    "editor.fontWeight": "200",
-    "terminal.integrated.fontWeight": "200",
-    "editor.fontLigatures": true,
-    "workbench.fontAliasing": "antialiased",
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "python.languageServer": "Jedi",
-    "python.pythonPath": "/usr/local/bin/python3",
-    "jupyter.alwaysTrustNotebooks": true,
-    "liveshare.authenticationProvider": "Microsoft",
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb"
-    },
-    "[html]": {
-        "editor.defaultFormatter": "vscode.html-language-features"
-    },
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "editor.formatOnSave": true
+  "editor.renderWhitespace": "selection",
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "editor.suggestSelection": "first",
+  "editor.renderControlCharacters": false,
+  "editor.fontFamily": "'Fira Code', 'DejaVu Sans Mono', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 14,
+  "editor.lineHeight": 18,
+  "window.zoomLevel": 0,
+  "terminal.integrated.fontSize": 14,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "liveshare.allowGuestDebugControl": true,
+  "editor.fontWeight": "200",
+  "terminal.integrated.fontWeight": "200",
+  "editor.fontLigatures": true,
+  "workbench.fontAliasing": "antialiased",
+  "python.terminal.activateEnvironment": false,
+  "python.venvFolders": [".venv", "${workspaceFolder}"],
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[javascript][typescript][javascriptreact][typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.autoClosingBrackets": "never",
+    "editor.indentSize": 2
+  },
+  "editor.formatOnSave": true,
+  "extensions.ignoreRecommendations": true,
+  "workbench.colorTheme": "GitHub Dark Dimmed",
+  "git.enableSmartCommit": true,
+  "python.defaultInterpreterPath": "python3",
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.importFormat": "relative",
+  "python.analysis.typeCheckingMode": "strict",
+  "python.testing.pytestEnabled": true,
+  "git.confirmSync": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "explorer.excludeGitIgnore": true,
+  "files.exclude": {
+    "**/.pytest_cache": true
+  },
+  "editor.inlineSuggest.suppressSuggestions": true
 }
