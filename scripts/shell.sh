@@ -9,7 +9,7 @@ function install_ohmyzsh {
         # Setup theme
         sed -i '' 's/^ZSH_THEME=.*$/ZSH_THEME="agnoster"/g' ~/.zshrc
 
-        cat >> ~/.zshrc <<- "EOM"
+        cat >>~/.zshrc <<-"EOM"
 # Set default user to hide it in the prompt
 export DEFAULT_USER="$(whoami)"
 
@@ -18,17 +18,9 @@ prompt_dir() {
   prompt_segment blue $CURRENT_FG '%(5~|%-1~/…/%3~|%4~)'
 }
 
-# Install z jump
-. /opt/homebrew/etc/profile.d/z.sh
-
-# Install fzf fuzzy completion
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 alias uuid='python3 -c "import uuid; print(uuid.uuid4())"'
 alias dequote='python3 -c '\''import sys; print(sys.stdin.read().decode("unicode_escape"))'\'
 EOM
-
-        # echo ". $(brew --prefix)/opt/asdf/libexec/asdf.sh" >> ~/.zshenv
     fi
 }
 
@@ -42,8 +34,29 @@ function install_autosuggestions {
 
 function configure_z {
     if has_formulae z; then
-        if should_configure z "! grep 'profile\.d/z.sh' ~/.zshrc"; then
-            echo '. $(brew --prefix)/etc/profile.d/z.sh'  >> ~/.zshrc
+        if should_configure z "grep '\/z\.sh' ~/.zshrc"; then
+            echo "\n# Install z jump\n. $(brew --prefix)/etc/profile.d/z.sh" >>~/.zshrc
+        fi
+    fi
+}
+
+function configure_asdf {
+    if has_formulae asdf; then
+        if should_configure asdf "grep 'asdf\.sh' ~/.zshrc"; then
+            echo "\n# Install asdf version manager\n. $(brew --prefix asdf)/libexec/asdf.sh" >>${ZDOTDIR:-~}/.zshrc
+            . ~/.zshrc
+            asdf plugin add nodejs
+            asdf plugin add python
+            asdf global nodejs latest
+            asdf global python system
+        fi
+    fi
+}
+
+function configure_fzf {
+    if has_formulae fzf; then
+        if should_configure fzf "grep '\.fzf\.zsh' ~/.zshrc"; then
+            echo "\n# Install fzf fuzzy completion\n[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh" >>~/.zshrc
         fi
     fi
 }
@@ -60,4 +73,7 @@ install_autosuggestions
 install_formulae z
 configure_z
 install_formulae fzf
+configure_fzf
 # install_formulae gh
+install_formulae asdf
+configure_asdf

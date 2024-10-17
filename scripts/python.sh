@@ -3,7 +3,7 @@
 set -eu
 
 function has_pip3_package {
-    return $(pip3 show "$1" > /dev/null)
+    return $(pip3 show "$1" >/dev/null)
 }
 
 function install_pip3_package {
@@ -14,5 +14,5 @@ function install_pip3_package {
 }
 
 install_formulae python
-
-install_pip3_package csvkit
+install_formulae csvkit
+# install_pip3_package csvkit
